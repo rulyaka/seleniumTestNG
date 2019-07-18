@@ -90,7 +90,7 @@ public class JavaScriptExecutorTests {
         String string = "blah blah blah bla";
         jse.executeScript("arguments[0].setAttribute('value', '"+string+"')", input);
 
-    } // BREAK 8:11
+    }
 
 }
 
