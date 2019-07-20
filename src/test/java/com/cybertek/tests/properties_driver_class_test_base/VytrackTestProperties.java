@@ -22,6 +22,5 @@ public class VytrackTestProperties {
 
         VytrackUtils.login(driver, username, password);
 
-        
     }
 }
