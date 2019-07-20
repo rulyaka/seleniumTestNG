@@ -36,7 +36,8 @@ public class SingletonTest {
     public void test2(){
 
         Driver.get().get("https://amazon.com");
-
-        System.out.println(Driver.get().getTitle());
+        String title = Driver.get().getTitle();
+        
+        System.out.println(title);
     }
 }
