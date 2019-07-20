@@ -1,5 +1,6 @@
 package com.cybertek.tests.properties_driver_class_test_base;
 
+import com.cybertek.utilities.ConfigurationReader;
 import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
@@ -21,6 +22,9 @@ public class PropertiesTest {
         String javaVersion = System.getProperty("java.specification.version");
         System.out.println("javaVersion = " + javaVersion);
 
+        String currentFolder = System.getProperty("user.dir");
+        System.out.println("currentFolder = " + currentFolder);
+
     }
 
     @Test
@@ -32,9 +36,14 @@ public class PropertiesTest {
 
 //        properties.forEach((k, v) -> System.out.println(k + ": " + v));
 
-        System.setProperty("webdriver.chrome.driver", "ASfasdfasdf");
+        System.setProperty("webdriver.chrome.driver", "/Users/cybertekschool/drivers/chromedriver");
 
         System.out.println(properties.getProperty("webdriver.chrome.driver"));
+
+
+        System.setProperty("marufjons.last.name.before.marriage", "same");
+
+        System.out.println(properties.getProperty("marufjons.last.name.before.marriage"));
 
 
     }
@@ -45,11 +54,12 @@ public class PropertiesTest {
         String path = "configuration.properties";
         // open the file
         FileInputStream fileInputStream = new FileInputStream(path);
+
         // load into the local object
 
         Properties properties = new Properties();
 
-
+        // load --> put the file contents in to the properties object
         properties.load(fileInputStream);
 
         // read properties from that object
@@ -60,9 +70,20 @@ public class PropertiesTest {
         System.out.println(properties.getProperty("username"));
         System.out.println(properties.getProperty("password"));
 
-    } // BREAK
-    // DURING THE BREAK UPDATE CODE, I WILL PUSH THIS FILE AND ANOTHER NEW ONE
+    }
 
+
+    @Test
+    public void readPropertiesTest(){
+
+        String url = ConfigurationReader.get("url");
+        System.out.println("url = " + url);
+
+        String username = ConfigurationReader.get("username");
+        String password = ConfigurationReader.get("password");
+        System.out.println("username = " + username);
+        System.out.println("password = " + password);
+    }
 
 
 }
