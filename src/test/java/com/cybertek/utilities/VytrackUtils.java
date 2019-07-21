@@ -1,6 +1,5 @@
 package com.cybertek.utilities;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -33,5 +32,11 @@ public class VytrackUtils {
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.titleContains(module));
+    }
+
+
+    public static void waitForUIOverlay(){
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loader-mask.shown")));
     }
 }
