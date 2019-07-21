@@ -31,6 +31,6 @@ public class VytrackUtils {
         // click on module
         String moduleXpath = "//span[@class='title title-level-2' and contains(text(), '"+module+"')]";
         driver.findElement(By.xpath(moduleXpath)).click();
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
     }
 }
