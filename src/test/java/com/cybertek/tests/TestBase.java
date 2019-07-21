@@ -18,18 +18,26 @@ public class TestBase {
        protected Actions actions;
        protected WebDriverWait wait;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUpMethod() throws InterruptedException {
+        // initilializes the webdriver object in test base class using the Driver utility
         driver = Driver.get();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        actions = new Actions(driver);
 
-        driver.get(ConfigurationReader.get("url"));
+        // setting implicit wait --> when elements not found, it will keep trying to find it for 10 seconds
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        // set up the explicit wait object.
+        wait = new WebDriverWait(driver, 10);
+
+        // Actions class enable advanced interactions like double click, drag drop ...
+        actions = new Actions(driver);
 
     }
 
-    @AfterClass
-    public void tearDownMethod(){
+    @AfterMethod
+    public void tearDownMethod() throws InterruptedException {
+
+//        Thread.sleep(4000);
         Driver.closeDriver();
     }
 
