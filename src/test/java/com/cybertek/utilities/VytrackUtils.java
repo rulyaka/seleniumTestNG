@@ -1,8 +1,12 @@
 package com.cybertek.utilities;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class VytrackUtils {
 
@@ -12,25 +16,22 @@ public class VytrackUtils {
 
         driver.findElement(By.id("prependedInput2")).
                 sendKeys(password+ Keys.ENTER);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.titleIs("Dashboard"));
+
     }
 
-    public static void selectMenuOption(WebDriver driver, String tab, String module) throws InterruptedException {
-        // click on tab
+    public static void selectMenuOption(WebDriver driver, String tab, String module)  {
         String tabXpath = "//span[@class='title title-level-1' and contains(text(), '"+tab+"')]";
-        driver.findElement(By.xpath(tabXpath)).click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // click on module
+        WebElement tabEl = driver.findElement(By.xpath(tabXpath));
+        BrowserUtils.hover(tabEl);
+
         String moduleXpath = "//span[@class='title title-level-2' and contains(text(), '"+module+"')]";
-        driver.findElement(By.xpath(moduleXpath)).click();
-//        Thread.sleep(2000);
+        WebElement moduleEl = driver.findElement(By.xpath(moduleXpath));
+        BrowserUtils.waitForClickablility(moduleEl, 5).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.titleContains(module));
     }
 }
