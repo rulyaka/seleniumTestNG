@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class WaitReviewTest extends TestBase {
 
     @Test
@@ -15,6 +17,8 @@ public class WaitReviewTest extends TestBase {
         driver.get("http://practice.cybertekschool.com/dynamic_loading/4");
 
         WebElement message = driver.findElement(By.id("finish"));
+
+        WebElement message2 = driver.findElement(By.id("finish"));
 
         System.out.println(message.getText());
     }
