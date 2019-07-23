@@ -32,6 +32,8 @@ public class TestBase {
         // Actions class enable advanced interactions like double click, drag drop ...
         actions = new Actions(driver);
 
+
+
     }
 
     @AfterMethod
