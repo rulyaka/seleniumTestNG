@@ -50,8 +50,58 @@ public class WebTableDemoTest extends TestBase {
 
         // TODO number row without headers
         List<WebElement> rowsWithOutHeaders = driver.findElements(By.xpath("//table[@id='table1']/tbody/tr"));
-        System.out.println("Number of rows withouth headers:" + rowsWithOutHeaders.size());
+        System.out.println("Number of rows without headers:" + rowsWithOutHeaders.size());
 
-        // BREAK 8:04
     }
+
+
+    // get whole row
+    @Test
+    public void getWholeRow(){
+
+        WebElement row = driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[2]"));
+        System.out.println(row.getText());
+
+        int index = 4;
+        String rowXpath = "//table[@id='table1']/tbody/tr["+index+"]";
+
+        row = driver.findElement(By.xpath(rowXpath));
+        System.out.println(row.getText());
+    }
+
+
+    // get all cells from certain row
+    @Test
+    public void getCellsinRow(){
+        List<WebElement> cellsInRow = driver.findElements(By.xpath("//table[@id='table1']/tbody/tr[1]/td"));
+
+        cellsInRow.forEach((cell-> System.out.println(cell.getText())));
+        System.out.println("cellsInRow.size() = " + cellsInRow.size());
+
+        int index = 3;
+        String cellInRowXpath = "//table[@id='table1']/tbody/tr["+index+"]/td";
+
+        cellsInRow = driver.findElements(By.xpath(cellInRowXpath));
+        cellsInRow.forEach((cell-> System.out.println(cell.getText())));
+
+    }
+
+    // get certain cell
+    @Test
+    public void getCellTest(){
+        WebElement cell = driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[3]/td[4]"));
+        System.out.println(cell.getText());
+
+    }
+
+    // BREAK    8.55
+
+
+
+
+
+
+
+
+
 }
