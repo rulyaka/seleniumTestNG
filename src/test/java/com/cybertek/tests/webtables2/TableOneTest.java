@@ -117,17 +117,14 @@ public class TableOneTest extends TestBase {
     @Test
     public void itirateTable(){
 
-        for (int i = 1; i <= getRowCount(); i++) {
+        for (int i = 1; i < getRowCount(); i++) {
             for (int j = 1; j <= getColCount(); j++) {
                 String xpath = "//table[@id='table1']/tbody/tr["+i+"]/td["+j+"]";
-
                 System.out.println(driver.findElement(By.xpath(xpath)).getText());
 
             }
 
         }
-
-
     }
 
 }

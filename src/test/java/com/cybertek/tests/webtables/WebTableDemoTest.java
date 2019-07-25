@@ -26,6 +26,7 @@ public class WebTableDemoTest extends TestBase {
         WebElement table = driver.findElement(By.id("table1"));
 
         System.out.println(table.getText());
+
     }
 
     // headers
