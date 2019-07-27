@@ -1,5 +1,6 @@
 package com.cybertek.tests;
 
+import com.cybertek.pages.LoginPage;
 import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
 import org.openqa.selenium.WebDriver;
@@ -32,6 +33,18 @@ public class TestBase {
         // Actions class enable advanced interactions like double click, drag drop ...
         actions = new Actions(driver);
 
+        new LoginPage().login("user", "pass");
+        // initilializes the webdriver object in test base class using the Driver utility
+        driver = Driver.get();
+
+        // setting implicit wait --> when elements not found, it will keep trying to find it for 10 seconds
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        // set up the explicit wait object.
+        wait = new WebDriverWait(driver, 10) ;
+
+        // Actions class enable advanced interactions like double click, drag drop ...
+        actions = new Actions(driver);
 
 
     }

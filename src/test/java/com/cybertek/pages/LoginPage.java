@@ -32,7 +32,6 @@ public class LoginPage {
         WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
         wait.until(ExpectedConditions.titleIs("Dashboard"));
 
-    }
-
+    } // 3.55
 
 }
