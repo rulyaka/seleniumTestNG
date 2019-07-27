@@ -4,6 +4,7 @@ import com.cybertek.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LoginPage {
 
@@ -11,7 +12,7 @@ public class LoginPage {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(id="prependedInput")
+    @FindBy(name="_username")
     public WebElement username;
 
     @FindBy(id="prependedInput2")
@@ -19,6 +20,13 @@ public class LoginPage {
 
     @FindBy (id = "_submit")
     public WebElement submit;
+
+    public void login(String usernameStr, String passwordStr){
+        username.sendKeys(usernameStr);
+        password.sendKeys(passwordStr);
+        submit.click();
+
+    }
 
 
 }
