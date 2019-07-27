@@ -1,10 +1,12 @@
 package com.cybertek.tests.page_object_model_tests;
 
 import com.cybertek.pages.CalendarEventsPage;
+import com.cybertek.pages.CreateCalendarEventsPage;
 import com.cybertek.pages.DashboardPage;
 import com.cybertek.pages.LoginPage;
 import com.cybertek.tests.TestBase;
 import com.cybertek.utilities.ConfigurationReader;
+import com.cybertek.utilities.VytrackUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -26,7 +28,12 @@ public class CreateCalendarPageTests extends TestBase {
         dashboardPage.selectMenuOption("Activities", "Calendar Events");
 
         CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
+        VytrackUtils.waitForUIOverlay();
         calendarEventsPage.createCalendarEvent.click();
+        VytrackUtils.waitForUIOverlay();
+
+        CreateCalendarEventsPage createCalendarEventsPage = new CreateCalendarEventsPage();
+        createCalendarEventsPage.repeat.click();
 
 
     }
