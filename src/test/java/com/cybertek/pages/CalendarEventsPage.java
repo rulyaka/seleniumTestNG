@@ -13,4 +13,5 @@ public class CalendarEventsPage {
 
     @FindBy (css = "[title='Create Calendar event']")
     public WebElement createCalendarEvent;
+
 }

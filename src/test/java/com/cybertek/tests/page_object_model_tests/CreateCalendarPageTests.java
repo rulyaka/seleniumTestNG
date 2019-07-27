@@ -7,6 +7,7 @@ import com.cybertek.pages.LoginPage;
 import com.cybertek.tests.TestBase;
 import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.VytrackUtils;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -34,6 +35,11 @@ public class CreateCalendarPageTests extends TestBase {
 
         CreateCalendarEventsPage createCalendarEventsPage = new CreateCalendarEventsPage();
         createCalendarEventsPage.repeat.click();
+
+        String selectedValue = createCalendarEventsPage.repeatOptionsList().getFirstSelectedOption().getText();
+        System.out.println(selectedValue);
+
+        Assert.assertEquals(selectedValue, "Daily");
 
 
     }
