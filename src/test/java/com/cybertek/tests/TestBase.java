@@ -24,7 +24,7 @@ public class TestBase {
         driver = Driver.get();
 
         // setting implicit wait --> when elements not found, it will keep trying to find it for 10 seconds
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         // set up the explicit wait object.
         wait = new WebDriverWait(driver, 10) ;
