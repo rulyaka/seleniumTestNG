@@ -30,7 +30,16 @@ public class CreateCalendarPageTests extends TestBase {
 
         CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
         VytrackUtils.waitForUIOverlay();
+
+
         calendarEventsPage.createCalendarEvent.click();
+
+        calendarEventsPage.createCalendarEvent.click();
+
+
+
+
+
         VytrackUtils.waitForUIOverlay();
 
         CreateCalendarEventsPage createCalendarEventsPage = new CreateCalendarEventsPage();

@@ -6,8 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class CreateCalendarEventsPage {
-    public CreateCalendarEventsPage() {
+public class CreateCalendarEventsPage extends NavigationBar {
+
+    public CreateCalendarEventsPage(){
         PageFactory.initElements(Driver.get(), this);
     }
 

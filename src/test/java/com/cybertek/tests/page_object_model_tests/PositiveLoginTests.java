@@ -13,17 +13,19 @@ import sun.rmi.runtime.Log;
 
 public class PositiveLoginTests extends TestBase {
 
+
     @BeforeMethod
     public void setUpMethod2() {
         driver.get(ConfigurationReader.get("url"));
     }
 
     @Test
-    public void loginDriverTest(){
+    public void loginDriverTest() {
         String username = ConfigurationReader.get("driver_username");
         String password = ConfigurationReader.get("driver_password");
 
         LoginPage loginPage = new LoginPage();
+
         loginPage.username.sendKeys(username);
         loginPage.password.sendKeys(password);
         loginPage.submit.click();
@@ -33,16 +35,17 @@ public class PositiveLoginTests extends TestBase {
     }
 
     @Test
-    public void loginSalesManager(){
+    public void loginSalesManager() {
+        LoginPage loginPage = new LoginPage();
+
         String username = ConfigurationReader.get("salesmanager_username");
         String password = ConfigurationReader.get("salesmanager_password");
-
-        LoginPage loginPage = new LoginPage();
         loginPage.login(username, password);
 
         BrowserUtils.waitFor(2);
         Assert.assertTrue(driver.getTitle().contains("Dashboard"));
     }
+
 }
 
 
