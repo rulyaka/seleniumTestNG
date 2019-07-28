@@ -32,6 +32,9 @@ public abstract class NavigationBar {
         BrowserUtils.waitForClickablility(moduleEl, 5).click();
 
         WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
+        if (module.equals("Vehicles")) {
+            module = "Car";
+        }
         wait.until(ExpectedConditions.titleContains(module));
     }
 }

@@ -33,9 +33,6 @@ public class VehiclesPage extends NavigationBar {
     @FindBy(css = "table.table-bordered th")
     public List<WebElement> gridHeaders;
 
-    @FindBy(xpath = "(//div[@data-role='column-manager-table-wrapper']//input[@type='checkbox'])[1]")
-    public WebElement driverCheckbox;
-
     public WebElement gridSettingsCheckbox(String header) {
         String xpath = "//label[.='"+header+"']/../../td[last()]/input";
         return Driver.get().findElement(By.xpath(xpath));
