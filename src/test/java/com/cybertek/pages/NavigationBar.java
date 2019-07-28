@@ -36,5 +36,6 @@ public abstract class NavigationBar {
             module = "Car";
         }
         wait.until(ExpectedConditions.titleContains(module));
+
     }
 }
