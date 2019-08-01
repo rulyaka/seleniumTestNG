@@ -41,7 +41,6 @@ public class TestBase {
         report.setSystemInfo("Environment", "QA3");
         report.setSystemInfo("OS", System.getProperty("os.name"));
         report.setSystemInfo("Browser", ConfigurationReader.get("browser"));
-        report.setSystemInfo("Testing Engineer", "Admiral Kunkka");
     }
 
     @AfterTest
