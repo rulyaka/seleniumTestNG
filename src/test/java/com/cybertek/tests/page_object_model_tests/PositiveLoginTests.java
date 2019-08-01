@@ -4,12 +4,9 @@ import com.cybertek.pages.LoginPage;
 import com.cybertek.tests.TestBase;
 import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.ConfigurationReader;
-import jdk.nashorn.internal.runtime.logging.Logger;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import sun.rmi.runtime.Log;
 
 public class PositiveLoginTests extends TestBase {
 
@@ -21,30 +18,54 @@ public class PositiveLoginTests extends TestBase {
 
     @Test
     public void loginDriverTest() {
+        // give name to the test
+        extentLogger = report.createTest("Positive login as Driver");
+        // prints the passed string to the report, used to capture test steps ...
+        extentLogger.info("Getting user credentials");
         String username = ConfigurationReader.get("driver_username");
         String password = ConfigurationReader.get("driver_password");
 
         LoginPage loginPage = new LoginPage();
 
+        extentLogger.info("Entering username and password");
         loginPage.username.sendKeys(username);
         loginPage.password.sendKeys(password);
+
+        extentLogger.info("Clicking on submit");
         loginPage.submit.click();
 
         BrowserUtils.waitFor(2);
+
+        extentLogger.info("Verifying title contains Dashboard");
         Assert.assertTrue(driver.getTitle().contains("Dashboard"));
+        extentLogger.pass("PASSED: Positive login as Driver");
+
     }
 
     @Test
     public void loginSalesManager() {
+        // give name to the test
+        extentLogger = report.createTest("Positive login as Sales manager");
+        // prints the passed string to the report, used to capture test steps ...
+        extentLogger.info("Getting user credentials");
+        String username = ConfigurationReader.get("salesmanager_username");
+        String password = ConfigurationReader.get("salesmanager_username");
+
         LoginPage loginPage = new LoginPage();
 
-        String username = ConfigurationReader.get("salesmanager_username");
-        String password = ConfigurationReader.get("salesmanager_password");
-        loginPage.login(username, password);
+        extentLogger.info("Entering username and salesmanager_password");
+        loginPage.username.sendKeys(username);
+        loginPage.password.sendKeys(password);
+
+        extentLogger.info("Clicking on submit");
+        loginPage.submit.click();
 
         BrowserUtils.waitFor(2);
-        Assert.assertTrue(driver.getTitle().contains("Dashboard"));
-    }
+
+        extentLogger.info("Verifying title contains Dashboard");
+        Assert.assertTrue(driver.getTitle().contains("Dashboard"),
+                "Title did not contain Dashboard");
+        extentLogger.pass("PASSED: Positive login as Sales manager");    }
 
 }
 
