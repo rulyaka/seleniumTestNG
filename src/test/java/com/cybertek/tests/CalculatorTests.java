@@ -50,5 +50,4 @@ public class CalculatorTests {
 //        calculator.divide(1, 0);
 //    }
 
-
 }
