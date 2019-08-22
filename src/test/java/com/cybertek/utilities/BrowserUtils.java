@@ -61,20 +61,17 @@ public class BrowserUtils {
         Actions actions = new Actions(Driver.get());
         actions.moveToElement(element).perform();
     }
-
+   
     /**
      * return a list of string from a list of elements
-     * text
      *
      * @param list of webelements
-     * @return
+     * @return list of string
      */
     public static List<String> getElementsText(List<WebElement> list) {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
-            if (!el.getText().isEmpty()) {
-                elemTexts.add(el.getText());
-            }
+            elemTexts.add(el.getText());
         }
         return elemTexts;
     }
@@ -91,9 +88,7 @@ public class BrowserUtils {
         List<String> elemTexts = new ArrayList<>();
 
         for (WebElement el : elems) {
-            if (!el.getText().isEmpty()) {
-                elemTexts.add(el.getText());
-            }
+            elemTexts.add(el.getText());
         }
         return elemTexts;
     }
