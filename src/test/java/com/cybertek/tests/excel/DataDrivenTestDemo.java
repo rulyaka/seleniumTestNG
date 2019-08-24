@@ -7,11 +7,14 @@ import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.ExcelUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class DataDrivenTestDemo extends TestBase {
 
     @Test
     public void testFullName(){
+        extentLogger = report.createTest("Virify full names test");
+        SoftAssert softAssert = new SoftAssert();
         // prepare my test data
         ExcelUtil qa3Sheet = new ExcelUtil("src/test/resources/Vytrack testusers.xlsx", "QA3-short");
 
@@ -36,14 +39,23 @@ public class DataDrivenTestDemo extends TestBase {
                 System.out.println("expectedFullName = " + expectedFullName);
                 String actualFullName = dashboardPage.userFullName.getText();
                 System.out.println("actualFullName = " + actualFullName);
+                // if values match
                 if (actualFullName.equals(expectedFullName)) {
+                    // write pass to the result column of the same row
                     qa3Sheet.setCellData("pass", "result", i);
                 } else {
+                    // write fail to the result column of the same row
                     qa3Sheet.setCellData("fail", "result", i);
                 }
+                softAssert.assertEquals(actualFullName, expectedFullName);
                 // log out
                 dashboardPage.logOut();
+            } else {
+                // write skip to the result column of the same row
+                qa3Sheet.setCellData("skip", "result", i);
+
             }
         }
+        softAssert.assertAll();
     }
 }
