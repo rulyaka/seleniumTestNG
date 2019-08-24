@@ -66,7 +66,7 @@ public class ReadExcelExample {
         // first select the row
         // Row --> represents a single row
         // getRow  --> get rows from the sheet, 0 based
-        Row row = workSheet.getRow(15);
+        Row row = workSheet.getRow(6);
 
         // select certain cell from the row
         // Cell --> represents a single cell
