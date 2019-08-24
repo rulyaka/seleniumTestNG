@@ -1,9 +1,6 @@
 package com.cybertek.tests.excel;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
 import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
@@ -29,6 +26,22 @@ public class WriteExcelDemo {
         }
         // sets the value of the cell to give string
         colName.setCellValue("Result");
+
+            // get the last row number (0 based)
+        int rowsCount = workSheet.getLastRowNum();
+        System.out.println("rowsCount = " + rowsCount);
+        // for loot to iterate through all the rows, skip the 1st row
+        for (int i = 1; i <=rowsCount ; i++) {
+            // current row where want to vhange result
+            Row currentRow = workSheet.getRow(i);
+            // result cell
+            Cell cell = currentRow.getCell(2);
+            if (cell == null) {
+                cell = currentRow.createCell(2);
+            }
+            cell.setCellValue("PASS");
+
+        }
 
         // class is used to open file and write to it
         FileOutputStream fileOutputStream = new FileOutputStream("src/test/resources/Countries.xlsx");
