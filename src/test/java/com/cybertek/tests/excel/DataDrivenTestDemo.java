@@ -36,7 +36,7 @@ public class DataDrivenTestDemo extends TestBase {
             System.out.println("expectedFullName "+expectedFullName);
             String actualFullName = dashboardpage.userFullName.getText();
             System.out.println("actualFullName "+actualFullName);
-              
+
 
 
             //log out
